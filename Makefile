@@ -1,11 +1,11 @@
 MAKEFLAGS += --silent
 
-include ./.env
-export ENV_FILE = ./.env
+include ./docker/.env
+export ENV_FILE = ./docker/.env
 export UID=$(shell id -u)
 export GID=$(shell id -g)
 export USER_NAME=$(shell id -un)
-export DOCKER_COMPOSE = docker-compose -f ./docker-compose.yml
+export DOCKER_COMPOSE = docker-compose -f ./docker/docker-compose.yml
 
 .PHONY: *
 SHELL=/bin/bash -o pipefail
@@ -22,20 +22,14 @@ init: ## Start containers
 	@${MAKE} stop
 	@${MAKE} docker_compose_up
 	docker exec -ti ${SYSTEM_NAME_APP} composer install
-	@${MAKE} info
 
 .PHONY: docker_compose_up
 docker_compose_up:
-	docker-compose up -d --remove-orphans
-
-.PHONY: info
-info:
-	@printf "\n\n";
-	@printf ${COLOR} "⠿Application available at http://${APP_DOMAIN}";
+	${DOCKER_COMPOSE} up -d --remove-orphans
 
 .PHONY: stop
 stop: ## Stop containers
-	docker-compose down -v --remove-orphans
+	${DOCKER_COMPOSE} down -v --remove-orphans
 
 .PHONY: shell sh
 sh: shell

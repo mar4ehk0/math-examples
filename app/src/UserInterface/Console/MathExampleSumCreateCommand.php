@@ -10,7 +10,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-
 #[AsCommand(name: 'app:example-sum')]
 class MathExampleSumCreateCommand extends Command
 {
@@ -48,5 +47,4 @@ class MathExampleSumCreateCommand extends Command
 
         return self::SUCCESS;
     }
-
 }

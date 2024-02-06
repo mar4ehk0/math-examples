@@ -7,7 +7,7 @@
 /app/*.lst
 
 # ide
-.env
+docker/.env
 .idea
 .vscode
 

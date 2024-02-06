@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+
+{% block title %} Create new Post {% endblock %}
+
+{% block content %}
+    <div class="container post-create w-100 m-auto">
+        <form action="{{ cm_url('post_publish') }}" method="post" enctype="multipart/form-data">
+            <h1 class="h3 mb-3 fw-normal">Create new Post</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="title" placeholder="title" name="title">
+                <label for="title">Post title</label>
+            </div>
+            <div>
+                <label for="body">Body</label>
+                <textarea class="form-control" id="body" name="body" rows="3">lorem ipsum</textarea>
+            </div>
+            <div>
+                <label for="image">Choose a profile picture:</label>
+                <input type="file" id="image" name="image" accept="image/png, image/jpeg" />
+            </div>
+            <button class="btn btn-primary w-100 py-2" type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock %}

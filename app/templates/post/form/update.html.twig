@@ -1,0 +1,22 @@
+{% extends "layout.html.twig" %}
+
+{% block title %} Update Post {{ post.id }} {% endblock %}
+
+{% block content %}
+    <div class="container post-update w-100 m-auto">
+        <form action="{{ cm_url('post_update', 'postId', post.id) }}" method="post">
+            <h1 class="h3 mb-3 fw-normal">Update Post - {{ post.id }}, it was created: {{ post.created_at }} </h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="title" placeholder="title" name="title" value="{{ post.title }}">
+                <label for="title">Post title</label>
+            </div>
+            <div>
+                <label for="body">Body</label>
+                <textarea class="form-control" id="body" name="body" rows="3">{{ post.body }}</textarea>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2" type="submit">Update</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "layout.html.twig" %}
+
+{% block title %} Post {{ post.id }} {% endblock %}
+
+{% block content %}
+    <div class="container post-show w-100 m-auto">
+        <article class="blog-post">
+            <h2 class="display-5 link-body-emphasis mb-1">Post - {{ post.title }}</h2>
+
+            {% if post.file_path is not null and post.file_path is not empty %}
+                <img src="{{ post.file_path }}" alt="image blog">
+            {% endif %}
+
+            <p class="blog-post-meta">{{ post.created_at }}</p>
+            <div>{{ post.body }}</div>
+        </article>
+    </div>
+{% endblock %}
